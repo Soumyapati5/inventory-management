@@ -1,0 +1,13 @@
+<!-- inventory/templates/inventory/delete_item.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Delete Item</h2>
+<p>Are you sure you want to delete the item "{{ item.name }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="{% url 'dashboard' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

@@ -1,0 +1,39 @@
+<!-- inventory/templates/inventory/dashboard.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Inventory Items</h2>
+<a href="{% url 'create-item' %}" class="btn btn-success mb-3">Add New Item</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.price }}</td>
+            <td>
+                <a href="{% url 'edit-item' item.id %}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{% url 'delete-item' item.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">No items found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

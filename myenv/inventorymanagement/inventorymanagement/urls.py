@@ -16,13 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import RedirectView
-# from inventory.views import api_root  # Optional: If you have an api_root view
+# from inventory.views import api_root  # Import if using api_root
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('inventory.urls')),
-
-    # Root API Endpoint
-    # path('', api_root, name='api-root'),
+    path('', include('inventory.urls')),  # Includes both API and frontend URLs
 ]
